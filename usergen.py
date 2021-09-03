@@ -16,17 +16,16 @@ k_val = length / 2
 if isinstance(k_val, float):
     k_val = int(math.ceil(k_val))
 
-def UserGen():
-    name = "".join(random.choices(pairs, k=k_val))
-    # cuts off the last letter if length is odd and too long
-    if len(name) > length:
-        name = name[:length]
-    print(name)
-    with open('usernames.txt', 'a') as t:
-        t.write(name + '\n')
-    return name
+def user_gen(amt):
+    for i in range(amt):
+        name = "".join(random.choices(pairs, k=k_val))
+        # cuts off the last letter if length is odd and too long
+        if len(name) > length:
+            name = name[:length]
+        print(name)
+        with open('usernames.txt', 'a') as t:
+            t.write(name + '\n')
 
-for i in range(amount):
-    UserGen()
+user_gen(amount)
 
 print("\n\nDone. Appended to usernames.txt")
